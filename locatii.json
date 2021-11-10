@@ -1,1 +1,11 @@
-{}
+{
+  "1": {
+    "py/object": "Domain.locatie.Locatie",
+    "idLocatie": "1",
+    "numeStrada": "1",
+    "numar": 1,
+    "bloc": "1",
+    "scara": "1",
+    "alteIndicatii": "1"
+  }
+}

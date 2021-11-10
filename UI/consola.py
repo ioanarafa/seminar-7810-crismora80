@@ -1,3 +1,4 @@
+from Service.comandaService import ComandaService
 from Service.locatieService import LocatieService
 from Service.masinaService import MasinaService
 
@@ -5,14 +6,17 @@ from Service.masinaService import MasinaService
 class Consola:
     def __init__(self,
                  masinaService: MasinaService,
-                 locatieService: LocatieService):
+                 locatieService: LocatieService,
+                 comandaService: ComandaService):
         self.__masinaService = masinaService
         self.__locatieService = locatieService
+        self.__comandaService = comandaService
 
     def runMenu(self):
         while True:
             print("1. CRUD masini")
             print("2. CRUD locatii")
+            print("3. CRUD comenzi")
             print("x. Iesire")
             optiune = input("Dati optiunea: ")
 
@@ -20,6 +24,8 @@ class Consola:
                 self.runCRUDMasiniMenu()
             elif optiune == "2":
                 self.runCRUDLocatiiMenu()
+            elif optiune == "3":
+                self.runCRUDComenziMenu()
             elif optiune == "x":
                 break
             else:
@@ -168,3 +174,89 @@ class Consola:
     def showAllLocatie(self):
         for locatie in self.__locatieService.getAll():
             print(locatie)
+
+    def runCRUDComenziMenu(self):
+        while True:
+            print("1. Adauga comanda")
+            print("2. Sterge comanda")
+            print("3. Modifica comanda")
+            print("a. Afiseaza toate comenzile")
+            print("x. Iesire")
+            optiune = input("Dati optiunea: ")
+
+            if optiune == "1":
+                self.uiAdaugaComanda()
+            elif optiune == "2":
+                self.uiStergeComanda()
+            elif optiune == "3":
+                self.uiModificaComanda()
+            elif optiune == "a":
+                self.showAllComenzi()
+            elif optiune == "x":
+                break
+            else:
+                print("Optiune gresita! Reincercati: ")
+
+    def uiAdaugaComanda(self):
+        try:
+            idComanda = input("Dati id-ul comenzii: ")
+            idMasina = input("Dati id-ul masinii: ")
+            idLocatie = input("Dati id-ul locatiei: ")
+            timpFinal = float(input("Dati timpul final: "))
+            costPerKm = float(input("Dati costul/km: "))
+            distantaParcursa = float(input("Dati distanta parcursa: "))
+            status = input("Dati statusul: ")
+
+            self.__comandaService.adauga(
+                idComanda,
+                idMasina,
+                idLocatie,
+                timpFinal,
+                costPerKm,
+                distantaParcursa,
+                status)
+        except ValueError as ve:
+            print(ve)
+        except KeyError as ke:
+            print(ke)
+        except Exception as e:
+            print(e)
+
+    def uiStergeComanda(self):
+        try:
+            idComanda = input("Dati id-ul comenzii de sters: ")
+
+            self.__comandaService.sterge(idComanda)
+        except KeyError as ke:
+            print(ke)
+        except Exception as e:
+            print(e)
+
+    def uiModificaComanda(self):
+        try:
+            idComanda = input("Dati id-ul comenzii de modificat: ")
+            idMasina = input("Dati noul id al masinii: ")
+            idLocatie = input("Dati noul id al locatiei: ")
+            timpFinal = float(input("Dati noul timp final: "))
+            costPerKm = float(input("Dati noul cost/km: "))
+            distantaParcursa = float(input("Dati noua distanta parcursa: "))
+            status = input("Dati noul status: ")
+
+            self.__comandaService.modifica(
+                idComanda,
+                idMasina,
+                idLocatie,
+                timpFinal,
+                costPerKm,
+                distantaParcursa,
+                status)
+        except ValueError as ve:
+            print(ve)
+        except KeyError as ke:
+            print(ke)
+        except Exception as e:
+            print(e)
+
+    def showAllComenzi(self):
+        for comanda in self.__comandaService.getAll():
+            print(comanda)
