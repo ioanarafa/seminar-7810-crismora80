@@ -17,7 +17,10 @@ def main():
     locatieService = LocatieService(locatieRepositoryJson)
 
     comandaRepositoryJson = ComandaRepositoryJson("comenzi.json")
-    comandaService = ComandaService(comandaRepositoryJson, masinaRepositoryJson, locatieRepositoryJson)
+    comandaService = ComandaService(
+        comandaRepositoryJson,
+        masinaRepositoryJson,
+        locatieRepositoryJson)
 
     consola = Consola(masinaService, locatieService, comandaService)
 
