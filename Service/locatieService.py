@@ -10,12 +10,30 @@ class LocatieService:
         return self.__locatieRepository.read()
 
     def adauga(self, idLocatie, numeStrada, numar, bloc, scara, alteIndicatii):
-        locatie = Locatie(idLocatie, numeStrada, numar, bloc, scara, alteIndicatii)
+        locatie = Locatie(
+            idLocatie,
+            numeStrada,
+            numar,
+            bloc,
+            scara,
+            alteIndicatii)
         self.__locatieRepository.adauga(locatie)
 
     def sterge(self, idLocatie):
         self.__locatieRepository.sterge(idLocatie)
 
-    def modifica(self, idLocatie, numeStrada, numar, bloc, scara, alteIndicatii):
-        locatie = Locatie(idLocatie, numeStrada, numar, bloc, scara, alteIndicatii)
+    def modifica(self,
+                 idLocatie,
+                 numeStrada,
+                 numar,
+                 bloc,
+                 scara,
+                 alteIndicatii):
+        locatie = Locatie(
+            idLocatie,
+            numeStrada,
+            numar,
+            bloc,
+            scara,
+            alteIndicatii)
         self.__locatieRepository.modifica(locatie)

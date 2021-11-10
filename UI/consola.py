@@ -3,7 +3,9 @@ from Service.masinaService import MasinaService
 
 
 class Consola:
-    def __init__(self, masinaService: MasinaService, locatieService: LocatieService):
+    def __init__(self,
+                 masinaService: MasinaService,
+                 locatieService: LocatieService):
         self.__masinaService = masinaService
         self.__locatieService = locatieService
 
@@ -126,7 +128,8 @@ class Consola:
             scara = input("Dati scara: ")
             alteIndicatii = input("Dati alte indicatii: ")
 
-            self.__locatieService.adauga(idLocatie, numeStrada, numar, bloc, scara, alteIndicatii)
+            self.__locatieService.adauga(
+                idLocatie, numeStrada, numar, bloc, scara, alteIndicatii)
         except ValueError as ve:
             print(ve)
         except KeyError as ke:
@@ -153,7 +156,8 @@ class Consola:
             scara = input("Dati noua scara: ")
             alteIndicatii = input("Dati noile indicatii: ")
 
-            self.__locatieService.modifica(idLocatie, numeStrada, numar, bloc, scara, alteIndicatii)
+            self.__locatieService.modifica(
+                idLocatie, numeStrada, numar, bloc, scara, alteIndicatii)
         except ValueError as ve:
             print(ve)
         except KeyError as ke:
@@ -164,4 +168,3 @@ class Consola:
     def showAllLocatie(self):
         for locatie in self.__locatieService.getAll():
             print(locatie)
-
