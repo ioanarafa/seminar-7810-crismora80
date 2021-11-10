@@ -1,0 +1,3 @@
+{
+  "1": {"py/object": "Domain.masina.Masina", "idMasina": "1", "indicativ": "abc", "nivelConfort": "standard", "plataCard": "da", "model": "astra"},
+  "2": {"py/object": "Domain.masina.Masina", "idMasina": "2", "indicativ": "222", "nivelConfort": "ridicat", "plataCard": "da", "model": "dsfdsf"}}

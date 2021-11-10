@@ -14,7 +14,6 @@ class MasinaRepositoryJson(MasinaRepository):
             with open(self.filename, "r") as f:
                 return jsonpickle.loads(f.read())
         except Exception as e:
-            print(e)
             return {}
 
     def __writeFile(self):
