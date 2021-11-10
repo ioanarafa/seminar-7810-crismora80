@@ -16,7 +16,7 @@ class MasinaRepository:
 
     def adauga(self, masina: Masina):
         if self.read(masina.idMasina) is not None:
-            raise KeyError("Exista deja o maisna cu id-ul dat!")
+            raise KeyError("Exista deja o masina cu id-ul dat!")
         self.masini[masina.idMasina] = masina
 
     def sterge(self, idMasina: str):
