@@ -8,7 +8,7 @@ class ComandaService:
     def __init__(self,
                  comandaRepository: ComandaRepository,
                  masinaRepository: MasinaRepository,
-                 locatieRepository:LocatieRepository):
+                 locatieRepository: LocatieRepository):
         self.__comandaRepository = comandaRepository
         self.__masinaRepository = masinaRepository
         self.__locatieRepository = locatieRepository
@@ -44,13 +44,13 @@ class ComandaService:
         self.__comandaRepository.sterge(idComanda)
 
     def modifica(self,
-                idComanda,
-                idMasina,
-                idLocatie,
-                timpFinal,
-                costPerKm,
-                distantaParcursa,
-                status):
+                 idComanda,
+                 idMasina,
+                 idLocatie,
+                 timpFinal,
+                 costPerKm,
+                 distantaParcursa,
+                 status):
         if self.__masinaRepository.read(idMasina) is None:
             raise KeyError("Nu exista nicio masina cu id-ul dat!")
         if self.__locatieRepository.read(idLocatie) is None:
