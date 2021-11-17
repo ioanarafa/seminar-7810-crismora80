@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from Domain.comanda import Comanda
 from Domain.locatie import Locatie
 
+
 @dataclass
 class LocatieComandaViewModel:
     locatie: Locatie
