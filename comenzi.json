@@ -1,1 +1,32 @@
-{}
+{
+  "1": {
+    "py/object": "Domain.comanda.Comanda",
+    "idEntitate": "1",
+    "idMasina": "1",
+    "idLocatie": "1",
+    "timpFinal": 1.0,
+    "costPerKm": 60.0,
+    "distantaParcursa": 20.0,
+    "status": "sada"
+  },
+  "2": {
+    "py/object": "Domain.comanda.Comanda",
+    "idEntitate": "2",
+    "idMasina": "2",
+    "idLocatie": "1",
+    "timpFinal": 22.0,
+    "costPerKm": 65.0,
+    "distantaParcursa": 123.0,
+    "status": "saddf"
+  },
+  "3": {
+    "py/object": "Domain.comanda.Comanda",
+    "idEntitate": "3",
+    "idMasina": "1",
+    "idLocatie": "2",
+    "timpFinal": 1.0,
+    "costPerKm": 80.0,
+    "distantaParcursa": 320.0,
+    "status": "asd"
+  }
+}

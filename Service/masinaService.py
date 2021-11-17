@@ -1,11 +1,11 @@
 from Domain.masina import Masina
 from Domain.masinaValidator import MasinaValidator
-from Repository.masinaRepository import MasinaRepository
+from Repository.repository import Repository
 
 
 class MasinaService:
     def __init__(self,
-                 masinaRepository: MasinaRepository,
+                 masinaRepository: Repository,
                  masinaValidator: MasinaValidator):
         self.__masinaRepository = masinaRepository
         self.__masinaValidator = masinaValidator
@@ -25,3 +25,4 @@ class MasinaService:
         masina = Masina(idMasina, indicativ, nivelConfort, plataCard, model)
         self.__masinaValidator.valideaza(masina)
         self.__masinaRepository.modifica(masina)
+    

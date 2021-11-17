@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 
+from Domain.entitate import Entitate
+
 
 @dataclass
-class Comanda:
-    idComanda: str
+class Comanda(Entitate):
     idMasina: str
     idLocatie: str
     timpFinal: float

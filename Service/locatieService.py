@@ -1,9 +1,9 @@
 from Domain.locatie import Locatie
-from Repository.locatieRepository import LocatieRepository
+from Repository.repository import Repository
 
 
 class LocatieService:
-    def __init__(self, locatieRepository: LocatieRepository):
+    def __init__(self, locatieRepository: Repository):
         self.__locatieRepository = locatieRepository
 
     def getAll(self):
@@ -37,3 +37,6 @@ class LocatieService:
             scara,
             alteIndicatii)
         self.__locatieRepository.modifica(locatie)
+
+    def ordoneazaLocatiiDupaIndicatii(self):
+        return sorted(self.__locatieRepository.read(), key=lambda locatie: len(locatie.alteIndicatii), reverse=True)

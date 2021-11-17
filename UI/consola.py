@@ -17,6 +17,12 @@ class Consola:
             print("1. CRUD masini")
             print("2. CRUD locatii")
             print("3. CRUD comenzi")
+            print("4. Ordonarea străzilor descrescător după lungimea indicațiilor")
+            print("5. Ordonarea mașinilor crescător după costul mediu / km")
+            print("6a. Determinarea locatiei cu cea mai lunga comanda")
+            print("6b. Determinarea locatiile cu cele mai lungi comenzi")
+            print("6c. Determinarea locatiei cu cea mai lunga suma a comenzilor")
+            print("6d. Determinarea locatiilor care au cel putin o comanda cu distanta mai mare decat o distanta data")
             print("x. Iesire")
             optiune = input("Dati optiunea: ")
 
@@ -26,6 +32,18 @@ class Consola:
                 self.runCRUDLocatiiMenu()
             elif optiune == "3":
                 self.runCRUDComenziMenu()
+            elif optiune == "4":
+                self.uiOrdoneazaLocatiiDupaIndicatii()
+            elif optiune == "5":
+                self.uiOrdoneazaMasiniDupaCostMediu()
+            elif optiune == "6a":
+                self.uiLocatieCuCeaMaiLungaComanda()
+            elif optiune == "6b":
+                self.uiLocatiiCuCeleMaiLungiComenzi()
+            elif optiune == "6c":
+                self.uiLocatieCuCeaMaiLungaSumaAComenzilor()
+            elif optiune == "6d":
+                self.uiLocatiiComenziMaiLungi()
             elif optiune == "x":
                 break
             else:
@@ -260,3 +278,39 @@ class Consola:
     def showAllComenzi(self):
         for comanda in self.__comandaService.getAll():
             print(comanda)
+
+    def uiOrdoneazaLocatiiDupaIndicatii(self):
+        for locatie in self.__locatieService.ordoneazaLocatiiDupaIndicatii():
+            print(locatie)
+
+    def uiOrdoneazaMasiniDupaCostMediu(self):
+        for costMediuPerMasina in self.__comandaService.ordoneazaMasiniDupaCostMediu():
+            print(costMediuPerMasina)
+
+
+    def uiLocatieCuCeaMaiLungaComanda(self):
+        locatieComandaMax = self.__comandaService.locatieCuComandaCeaMaiLunga()
+        if locatieComandaMax:
+            print(locatieComandaMax)
+        else:
+            print("Nu exista")
+
+    def uiLocatiiCuCeleMaiLungiComenzi(self):
+        locatiiComenziMax = self.__comandaService.locatiiCuCeleMaiLungiComenzi()
+        if locatiiComenziMax is None:
+            print("Nu exista")
+        else:
+            for locatieComanda in locatiiComenziMax:
+                print(locatieComanda)
+
+    def uiLocatieCuCeaMaiLungaSumaAComenzilor(self):
+        locatie = self.__comandaService.locatieCuCeaMaiLungaSumaAComenzilor()
+        if locatie:
+            print(locatie)
+        else:
+            print("Nu exista")
+
+    def uiLocatiiComenziMaiLungi(self):
+        distantaMax = float(input("Dati distanta maxima: "))
+        for locatieComanda in self.__comandaService.locatiiComenziMaiLungiDecat(distantaMax):
+            print(locatieComanda)

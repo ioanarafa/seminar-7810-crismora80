@@ -1,4 +1,5 @@
 from Domain.masina import Masina
+from Domain.masinaError import MasinaError
 
 
 class MasinaValidator:
@@ -10,4 +11,4 @@ class MasinaValidator:
         if masina.plataCard not in ['da', 'nu']:
             erori.append("Plata card poate fi 'da' sau 'nu!")
         if len(erori) > 0:
-            raise ValueError(erori)
+            raise MasinaError(erori)

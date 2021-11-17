@@ -1,10 +1,26 @@
 {
   "1": {
     "py/object": "Domain.masina.Masina",
-    "idMasina": "1",
+    "idEntitate": "1",
     "indicativ": "BV",
     "nivelConfort": "standard",
+    "plataCard": "da",
+    "model": "opel"
+  },
+  "2": {
+    "py/object": "Domain.masina.Masina",
+    "idEntitate": "2",
+    "indicativ": "2",
+    "nivelConfort": "ridicat",
     "plataCard": "nu",
-    "model": "abc"
+    "model": "dsfsaf"
+  },
+  "3": {
+    "py/object": "Domain.masina.Masina",
+    "idEntitate": "3",
+    "indicativ": "3",
+    "nivelConfort": "standard",
+    "plataCard": "da",
+    "model": "dsfdsfdsfs"
   }
 }

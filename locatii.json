@@ -1,11 +1,29 @@
 {
   "1": {
     "py/object": "Domain.locatie.Locatie",
-    "idLocatie": "1",
+    "idEntitate": "1",
     "numeStrada": "1",
     "numar": 1,
     "bloc": "1",
     "scara": "1",
     "alteIndicatii": "1"
+  },
+  "2": {
+    "py/object": "Domain.locatie.Locatie",
+    "idEntitate": "2",
+    "numeStrada": "2",
+    "numar": 2,
+    "bloc": "2",
+    "scara": "2",
+    "alteIndicatii": "222"
+  },
+  "3": {
+    "py/object": "Domain.locatie.Locatie",
+    "idEntitate": "3",
+    "numeStrada": "3",
+    "numar": 3,
+    "bloc": "3",
+    "scara": "3",
+    "alteIndicatii": "33"
   }
 }
