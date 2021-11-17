@@ -3,7 +3,8 @@ from Repository.repository import Repository
 from ViewModels.masinaCostMediuViewModel import MasinaCostMediuViewModel
 from ViewModels.locatieComandaViewModel import LocatieComandaViewModel
 from ViewModels.locatieComenziViewModel import LocatieComenziViewModel
-from ViewModels.locatieDistantaComandaViewModel import LocatieDistantaComandaViewModel
+from ViewModels.locatieDistantaComandaViewModel \
+    import LocatieDistantaComandaViewModel
 
 
 class ComandaService:
@@ -86,25 +87,33 @@ class ComandaService:
                 sum(costuri) / len(costuri) if costuri else 0
             ))
 
-        return sorted(rezultat, key=lambda costPerMasina: costPerMasina.costMediu)
+        return sorted(rezultat,
+                      key=lambda costPerMasina: costPerMasina.costMediu)
 
     def locatieCuComandaCeaMaiLunga(self):
         '''
-        determina locatia cu loaatia cea mai lunga (daca sunt mai multe, se gaseste doar una din ele)
-        :return: o locatie, impreuna cu comanda ei ce reprezinta cea ami lunga comanda
+        determina locatia cu loaatia cea mai lunga
+            (daca sunt mai multe, se gaseste doar una din ele)
+        :return: o locatie, impreuna cu comanda ei
+            ce reprezinta cea mai lunga comanda
         '''
         comenzi = self.__comandaRepository.read()
 
         if not comenzi:
             return None
 
-        comandaDistantaMax = max(comenzi, key=lambda comanda: comanda.distantaParcursa)
+        comandaDistantaMax = max(comenzi,
+                                 key=lambda comanda: comanda.distantaParcursa)
         return self.__locatieRepository.read(comandaDistantaMax.idLocatie)
 
     def locatiiCuCeleMaiLungiComenzi(self):
         '''
-        determinaa toate locatiile care au cel putin o comanda cu distanta egala cu distanta maxima a comenzilor (per toate comenzile)
-        :return: o lista de locatii, impreuna cu comanda aferenta ei cu distanta maxima (per toate comenzile) sau None, daca nu exista
+        determinaa toate locatiile care au cel putin o comanda
+            cu distanta egala cu distanta maxima a comenzilor
+            (per toate comenzile)
+        :return: o lista de locatii, impreuna cu comanda aferenta ei
+            cu distanta maxima (per toate comenzile)
+            sau None, daca nu exista
         '''
         comenzi = self.__comandaRepository.read()
 
@@ -112,7 +121,8 @@ class ComandaService:
             return None
 
         rezultat = []
-        comandaDistantaMax = max(comenzi, key=lambda comanda: comanda.distantaParcursa)
+        comandaDistantaMax = max(comenzi,
+                                 key=lambda comanda: comanda.distantaParcursa)
         distantaMax = comandaDistantaMax.distantaParcursa
 
         for comanda in comenzi:
@@ -126,16 +136,19 @@ class ComandaService:
     def locatieCuCeaMaiLungaSumaAComenzilor(self):
         '''
         determina locatia care are suma maxima a distantelor comenzilor
-        :return: o locatie, impreuna cu suma comenzilor sale sau None, daca nu exista o astfel de locatie
+        :return: o locatie, impreuna cu suma comenzilor sale sau None,
+            daca nu exista o astfel de locatie
         '''
         distantaPentruLocatii = {}
 
         for comanda in self.__comandaRepository.read():
             if comanda.idLocatie not in distantaPentruLocatii:
-                distantaPentruLocatii[comanda.idLocatie] = comanda.distantaParcursa
+                distantaPentruLocatii[comanda.idLocatie] = \
+                    comanda.distantaParcursa
             else:
                 distantaPentruLocatii[comanda.idLocatie] = \
-                    distantaPentruLocatii[comanda.idLocatie] + comanda.distantaParcursa
+                    distantaPentruLocatii[comanda.idLocatie] \
+                    + comanda.distantaParcursa
 
         if not distantaPentruLocatii:
             return None
@@ -151,12 +164,14 @@ class ComandaService:
 
     def locatiiComenziMaiLungiDecat(self, distantaMax):
         '''
-        determina toate locatiile care au cel putin o comanda cu distanta mai mica decat o distanta data
+        determina toate locatiile care au cel putin
+            o comanda cu distanta mai mica decat o distanta data
         :param distantaMax: float
-        :return: o lista continand locatii, impreuna cu comenzile lor mai scurte decat distantaMax
+        :return: o lista continand locatii,
+            impreuna cu comenzile lor mai scurte decat distantaMax
         '''
         locatiiComenzi = {}
-        rezultat=[]
+        rezultat = []
         for comanda in self.__comandaRepository.read():
             if comanda.distantaParcursa < distantaMax:
                 if comanda.idLocatie not in locatiiComenzi:
@@ -169,5 +184,3 @@ class ComandaService:
                 locatiiComenzi[idLocatie]
             ))
         return rezultat
-
-

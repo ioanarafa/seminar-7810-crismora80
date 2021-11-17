@@ -25,4 +25,3 @@ class MasinaService:
         masina = Masina(idMasina, indicativ, nivelConfort, plataCard, model)
         self.__masinaValidator.valideaza(masina)
         self.__masinaRepository.modifica(masina)
-    

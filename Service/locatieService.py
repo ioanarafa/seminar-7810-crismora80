@@ -39,4 +39,6 @@ class LocatieService:
         self.__locatieRepository.modifica(locatie)
 
     def ordoneazaLocatiiDupaIndicatii(self):
-        return sorted(self.__locatieRepository.read(), key=lambda locatie: len(locatie.alteIndicatii), reverse=True)
+        return sorted(self.__locatieRepository.read(),
+                      key=lambda locatie: len(locatie.alteIndicatii),
+                      reverse=True)

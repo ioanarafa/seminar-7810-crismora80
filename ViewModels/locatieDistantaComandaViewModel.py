@@ -8,4 +8,5 @@ class LocatieDistantaComandaViewModel:
     distanta: float
 
     def __str__(self):
-        return f'{self.locatie} are suma distantelor comenzilor {self.distanta}'
+        return f'{self.locatie} are suma distantelor comenzilor ' \
+               f'{self.distanta}'
