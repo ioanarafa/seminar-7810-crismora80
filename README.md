@@ -1,4 +1,4 @@
-# Seminarele 7, 8 și 10 - Săptămânile 7, 8 și 11
+# Lab 7, 8 și 10 
 
 **Atenție:** seminarul 9 este separat. 
 
